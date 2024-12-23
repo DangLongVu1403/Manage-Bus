@@ -1,0 +1,54 @@
+body, .container {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  width: 150px; 
+  text-align: right;
+  margin-right: 10px; 
+}
+
+.form-control {
+  width: 200px;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start; 
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%; 
+  padding-left: 15px; 
+  padding-right: 15px; 
+}
+@media (min-width: 768px) {
+  .row.g-3 {
+    flex-direction: row;
+  }
+
+  .col-md-6 {
+    flex: 1;
+    max-width: 50%; 
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 90%; 
+  }
+
+  .col-md-6 {
+    max-width: 25%;
+  }
+}
