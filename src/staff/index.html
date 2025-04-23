@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý nhà xe</title>
+    <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button">
+                    <i class="lni lni-dashboard-square-1"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="#">Nhà xe Hiếu Viện</a>
+                </div>
+            </div>
+
+            <div class="user-info">
+              <img src="../images/logo.png" alt="User Avatar"  id="user-avatar" class="user-avatar">
+              <span class="user-name" id="user-name">Nhân viên</span>
+            </div>          
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link"  data-page="./home.html">
+                      <i class="lni lni-home-2"></i>
+                      <span>Trang chủ</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#route" aria-expanded="false" aria-controls="route">
+                        <i class="lni lni-route-1"></i>
+                        <span>Quản lý chuyến xe</span>
+                    </a>
+                    <ul id="route" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a href="#" class="sidebar-link" data-page="./manage_trip/manage/manage_trip.html">Danh sách chuyến</a></li>
+                        <li class="sidebar-item"><a href="#" class="sidebar-link" data-page="./manage_trip/add_trip/add_trip.html">Thêm chuyến</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#vehicle" aria-expanded="false" aria-controls="vehicle">
+                        <i class="lni lni-bus-1"></i>
+                        <span>Quản lý xe</span>
+                    </a>
+                    <ul id="vehicle" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a href="#" class="sidebar-link" data-page="./manage_bus/manage/manage_bus.html">Danh sách xe</a></li>
+                        <li class="sidebar-item"><a href="#" class="sidebar-link" data-page="./manage_bus/add_bus/add_bus.html">Thêm xe</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#driver" aria-expanded="false" aria-controls="driver">
+                        <i class="lni lni-user-4"></i>
+                        <span>Quản lý tài xế</span>
+                    </a>
+                    <ul id="driver" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a href="#" class="sidebar-link" data-page="./manage_driver/manage_driver/manage_driver.html">Danh sách tài xế</a></li>
+                        <li class="sidebar-item"><a href="#" class="sidebar-link" data-page="./manage_driver/add_driver/add_driver.html">Thêm tài xế</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-page="./manage_staff/manage_staff.html">
+                        <i class="lni lni-user-multiple-4"></i>
+                        <span>Quản lý nhân viên</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-page="./help/help.html">
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-headset"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 14v-3a8 8 0 1 1 16 0v3" /><path d="M18 19c0 1.657 -2.686 3 -6 3" /><path d="M4 14a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2v-3z" /><path d="M15 14a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2v-3z" /></svg>
+                        <span>Hỗ trợ</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#account" aria-expanded="false" aria-controls="account">
+                        <i class="lni lni-gears-3"></i>
+                        <span>Quản lý tài khoản</span>
+                    </a>
+                    <ul id="account" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a href="#" class="sidebar-link" data-page="../manage_account/manage_account.html">Thông tin tài khoản</a></li>
+                        <li class="sidebar-item"><a href="#" class="sidebar-link" data-page="../manage_account/change_password.html">Thay đổi mật khẩu</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="#" class="sidebar-link">
+                    <i class="lni lni-exit"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        <div class="main p-3">
+            <iframe id="content-frame" src="./home.html" frameborder="0" width="100%" height="100%"></iframe>
+        </div>        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

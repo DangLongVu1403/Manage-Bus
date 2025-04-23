@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Tài Khoản</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    #userAvatar {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+    .info-row {
+      display: flex;
+      align-items: center;
+      max-width: 400px;
+      margin: 0 auto 2rem;
+    }
+    .info-row label {
+      width: 200px;
+      text-align: left;
+      margin-right: 10px;
+    }
+    .info-row .input-group {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+    .info-row input {
+      flex-grow: 1;
+    }
+    .info-row input[readonly] {
+      background-color: #e9ecef;
+      cursor: not-allowed;
+    }
+    .info-row .name-input-group {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    .info-row .phone-input-group {
+      width: 100%;
+    }
+    .info-row .phone-input-group input {
+      width: calc(100% - 40px); /* Match name input + button width */
+    }
+    .avatar-section {
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 1000; /* High z-index to avoid being covered */
+    }
+    .avatar-container {
+      position: relative;
+      display: inline-block;
+    }
+    .avatar-container .btn-edit-avatar {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 1001; /* Higher than avatar-section */
+      background-color: #6c757d;
+      color: #fff;
+      border: none;
+      padding: 8px;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      visibility: visible !important;
+      opacity: 1 !important;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+    .avatar-container .btn-edit-avatar:hover {
+      opacity: 0.9;
+    }
+    .avatar-container .btn-edit-avatar i {
+      font-size: 16px;
+    }
+    .update-btn-section {
+      margin-top: 3rem;
+    }
+    .error-message {
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5 text-center">
+    <h1 class="mb-5">Thông Tin Tài Khoản</h1>
+    
+    <div class="avatar-section">
+      <div class="avatar-container">
+        <img id="userAvatar" src="../images/boy.png" alt="Avatar" class="rounded-circle" onerror="this.onerror=null;this.src='../images/boy.png';">
+        <button class="btn btn-edit-avatar" id="editAvatarBtn" type="button" aria-label="Chỉnh sửa ảnh đại diện">
+          <i class="bi bi-camera"></i>
+        </button>
+        <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+      </div>
+    </div>
+    
+    <div class="mb-3 info-row">
+      <label for="editName" class="form-label">Tên:</label>
+      <div class="input-group name-input-group">
+        <input type="text" class="form-control" id="editName" value="" disabled placeholder="Nhập tên của bạn">
+        <button class="btn btn-sm btn-outline-primary ms-2" id="editNameBtn" type="button">✎</button>
+      </div>
+      <span id="errorName" class="error-message"></span>
+    </div>
+    
+    <div class="mb-3 info-row">
+      <label for="editPhone" class="form-label">Số Điện Thoại:</label>
+      <div class="input-group phone-input-group">
+        <input type="tel" class="form-control" id="editPhone" value="" readonly placeholder="Số điện thoại không thể chỉnh sửa">
+      </div>
+      <span id="errorPhone" class="error-message"></span>
+    </div>
+    
+    <div class="update-btn-section">
+      <button id="updateBtn" class="btn btn-success d-none" type="button">Cập Nhật</button>
+    </div>
+  </div>
+  
+  <script type="module">
+    // Inline script to ensure button functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const editAvatarBtn = document.getElementById('editAvatarBtn');
+      const avatarInput = document.getElementById('avatarInput');
+      const userAvatar = document.getElementById('userAvatar');
+
+      if (editAvatarBtn && avatarInput) {
+        editAvatarBtn.addEventListener('click', () => {
+          avatarInput.click();
+        });
+
+        avatarInput.addEventListener('change', (event) => {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              userAvatar.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

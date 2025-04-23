@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Nhập</title>
+  <link rel="stylesheet" href="style_login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="header">
+      <img src="../images/bus.png" alt="Quản lý nhà xe" class="logo">
+      <h1>Quản Lý Nhà Xe Hiếu Viện</h1>
+    </div>
+    <div class="login-box">
+      <h2>Đăng Nhập</h2>
+      <form id="login-form">
+        <div class="input-group">
+          <label for="phone">Số điện thoại</label>
+          <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+        </div>    
+        <button type="submit" class="login-btn">Đăng Nhập</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async function(event) {
+      event.preventDefault(); // Ngăn chặn việc reload trang
+
+      // Lấy giá trị từ form
+      const phone = document.getElementById('phone').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        // Gửi request đến API đăng nhập
+        const response = await fetch('http://localhost:4500/api/users/login', { 
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ phone, password})
+        });
+
+        // Xử lý kết quả trả về
+        if (response.ok) {
+          const data = await response.json();
+          alert(`Đăng nhập thành công! Chào mừng, ${data.data.user.name || 'user'}!`);
+
+          // Lưu token vào localStorage để sử dụng cho các yêu cầu tiếp theo
+          localStorage.setItem('authToken', data.data.accessToken);
+          localStorage.setItem('name', data.data.user.name);
+          localStorage.setItem('refreshToken', data.data.refreshToken);
+          localStorage.setItem('avatar', data.data.user.avatar || 'https://firebasestorage.googleapis.com/v0/b/danh-sach-bai-hat.appspot.com/o/image%2Flogo.png?alt=media&token=e6aeff7e-c708-429c-9bfe-0cba9f9c6dfb'); 
+          localStorage.setItem('id', data.data.user._id);
+          localStorage.setItem('role', data.data.user.role);
+          localStorage.setItem('phone', data.data.user.phone);
+          setTimeout(function() {
+            window.location.href = '/BusManage/src/index.html';
+          }, 500);
+        } else {
+          const error = await response.json();
+          alert(`Đăng nhập thất bại: ${error.message || 'Có lỗi xảy ra'}`);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Không thể kết nối đến server!');
+      }
+    });
+  </script>
+</body>
+</html>

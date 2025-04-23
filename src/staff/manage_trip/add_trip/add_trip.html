@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo Chuyến Xe</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <h1 class="mb-4 text-center">Tạo Chuyến Xe</h1>
+    <form id="tripForm">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="bus" class="form-label">Xe</label>
+          <select class="form-select" id="bus" required></select>
+        </div>
+        <div class="col-md-4">
+          <label for="driver" class="form-label">Tài xế</label>
+          <select class="form-select" id="driver" required></select>
+        </div>
+        <div class="col-md-4">
+          <label for="startLocation" class="form-label">Điểm Khởi Hành</label>
+          <select class="form-select" id="startLocation" required></select>
+        </div>
+        <div class="col-md-4">
+          <label for="endLocation" class="form-label">Điểm Đến</label>
+          <select class="form-select" id="endLocation" required></select>
+        </div>
+        <div class="col-md-4">
+          <label for="price" class="form-label">Giá Vé</label>
+          <input type="number" class="form-control" id="price" placeholder="Nhập giá vé" min="0" required>
+        </div>
+        <div class="col-md-4">
+          <label for="estimatedHours" class="form-label">Thời Gian Ước Tính (Giờ)</label>
+          <input type="number" class="form-control" id="estimatedHours" placeholder="Nhập giờ" min="0" required>
+        </div>
+        <div class="col-md-4">
+          <label for="estimatedMinutes" class="form-label">Thời Gian Ước Tính (Phút)</label>
+          <input type="number" class="form-control" id="estimatedMinutes" placeholder="Nhập phút" min="0" required>
+        </div>
+      </div>
+      <h3 class="mt-4">Lịch Trình</h3>
+      <div class="row g-3">
+        <div class="col-md-4" id="startDateContainer">
+          <label for="startDate" class="form-label" id="startDateLabel">Ngày Bắt Đầu</label>
+          <input type="datetime-local" class="form-control" id="startDate" required>
+        </div>
+        
+        <div class="col-md-4" id="endDateContainer">
+          <label for="endDate" class="form-label">Ngày Kết Thúc</label>
+          <input type="datetime-local" class="form-control" id="endDate">
+        </div>
+
+        <div class="col-md-4">
+          <label for="scheduleType" class="form-label">Loại Lịch Trình</label>
+          <select class="form-select" id="scheduleType" required>
+            <option value="just_one">Một lần</option>
+            <option value="daily">Hàng ngày</option>
+            <option value="weekly">Hàng tuần</option>
+            <option value="monthly">Hàng tháng</option>
+            <option value="custom">Tùy chỉnh</option>
+          </select>
+        </div>
+        <div class="col-md-4" id="departureTimeContainer">
+          <label for="departureTime" class="form-label">Thời Gian Khởi Hành</label>
+          <input type="time" class="form-control" id="departureTime" required>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary">Tạo Chuyến Đi</button>
+      </div>
+    </form>
+    <div id="responseMessage"></div>
+  </div>
+  <script type="module" src="add_trip.js"></script>
+</body>
+</html>

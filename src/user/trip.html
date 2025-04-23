@@ -1,0 +1,102 @@
+<div class="container mt-4" style="min-height: 60vh;margin-bottom: 10px;">
+    <!-- Header Section (Thay thế bằng form tìm kiếm) -->
+    <section id="search-ticket" class="search-ticket mb-4" style="margin-top: 20px;">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <form>
+                    <div class="row mb-3 align-items-end">
+                        <!-- Điểm Khởi Hành -->
+                        <div class="col-md-3">
+                            <label for="diemKhoiHanh" class="form-label">Điểm Khởi Hành</label>
+                            <select class="form-select" id="diemKhoiHanh" required>
+                                <option selected disabled>Chọn Điểm Khởi Hành</option>
+                                <option value="1">Hà Nội</option>
+                                <option value="2">TP. Hồ Chí Minh</option>
+                                <option value="3">Đà Nẵng</option>
+                            </select>
+                        </div>
+                        <!-- Điểm Đến -->
+                        <div class="col-md-3">
+                            <label for="diemDen" class="form-label">Điểm Đến</label>
+                            <select class="form-select" id="diemDen" required>
+                                <option selected disabled>Chọn Điểm Đến</option>
+                                <option value="1">Hà Nội</option>
+                                <option value="2">TP. Hồ Chí Minh</option>
+                                <option value="3">Đà Nẵng</option>
+                            </select>
+                        </div>
+                        <!-- Ngày Khởi Hành -->
+                        <div class="col-md-3">
+                            <label for="ngayKhoiHanh" class="form-label">Ngày Khởi Hành</label>
+                            <input type="date" class="form-control" id="ngayKhoiHanh" required>
+                        </div>
+                        <!-- Nút Tìm Vé Xe -->
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary w-100">Tìm Vé Xe</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content: Filters and Trip List -->
+    <div class="row">
+        <!-- Filter Section (Left) -->
+        <div class="col-md-3">
+            <div class="filter-section p-3 border rounded">
+                <h5 class="mb-3">BỘ LỌC TÌM KIẾM</h5>
+                <!-- Filter by Departure Time -->
+                <div class="mb-3">
+                    <label class="fw-bold">Giờ đi</label>
+                    <input type="range" class="form-range" min="0" max="23" step="1" id="filterTimeRange" value="0">
+                    <div class="d-flex justify-content-between">
+                        <span>00:00</span>
+                        <span>23:59</span>
+                    </div>
+                </div>
+                <!-- Filter by Price -->
+                <div class="mb-3">
+                    <label class="fw-bold">Giá vé</label>
+                    <input type="range" class="form-range" min="0" max="2000000" step="10000" id="filterPriceRange" value="0">
+                    <div class="d-flex justify-content-between">
+                        <span>0 đ</span>
+                        <span>2,000,000 đ</span>
+                    </div>
+                </div>
+                <!-- Filter by Available Seats -->
+                <div class="mb-3">
+                    <label class="fw-bold">Số ghế trống</label>
+                    <input type="range" class="form-range" min="0" max="42" step="1" id="filterSeatsRange" value="0">
+                    <div class="d-flex justify-content-between">
+                        <span>0</span>
+                        <span>50</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trip List Section (Right) -->
+        <div class="col-md-9">
+            <!-- Sorting Options -->
+            <div class="sort-options mb-3">
+                <span>SẮP XẾP THEO:</span>
+                <button class="btn btn-link" id="sortByTime">Giờ đi sớm nhất</button>
+                <button class="btn btn-link" id="sortByPriceAsc">Giá thấp nhất</button>
+                <button class="btn btn-link" id="sortByPriceDesc">Giá cao nhất</button>
+            </div>
+            <!-- Trip List -->
+            <div class="trip-list" id="tripList">
+                <div class="text-center" id="loadingIndicator">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Đang tải...</span>
+                    </div>
+                    <p>Đang tìm kiếm chuyến xe...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/trip.js"></script>
+<script src="assets/js/fetchStations.js" defer></script>

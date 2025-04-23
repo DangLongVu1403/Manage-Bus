@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhà xe Hiếu Viện</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 66px; /* Đẩy nội dung xuống dưới navbar */
+        }
+        .navbar-nav {
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar-brand {
+            position: absolute;
+            left: 15px;
+        }
+        .nav-item {
+            padding: 0 10px;
+        }
+        .navbar {
+            font-family: 'Poppins', sans-serif;
+        }
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            left: auto;
+            background-color: #fff;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 8px 0;
+            min-width: 240px;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+        }
+        .dropdown-menu.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .dropdown-item {
+            color: #333;
+            font-size: 14px;
+            padding: 4px 20px;
+            margin: 4px;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #007bff;
+        }
+        .dropdown-divider {
+            margin: 5px 0;
+            border-top: 1px solid #e9ecef;
+        }
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            color: #fff !important;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .dropdown-toggle:hover, .dropdown-toggle:focus {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .dropdown-toggle img {
+            border: 2px solid #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown-toggle::after {
+            margin-left: 0.5em;
+        }
+        @media (max-width: 992px) {
+            .navbar-nav {
+                margin-right: 0;
+            }
+            .dropdown {
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/linearicons.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Nhà xe Hiếu Viện</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav" aria-controls="navbarNav" 
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-page="../user/home.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="../user/about.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="../user/new.html">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="../user/help.html">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                    href="#" id="userDropdown" role="button"
+                    aria-expanded="false">
+                        <img class="rounded-circle"
+                            alt="User Avatar" style="width: 40px; height: 40px;">
+                        <span class="ms-2" id="username">Nguyễn Văn A</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="#" data-page="../manage_account/manage_account.html">
+                            <i class="fa fa-user me-2"></i> Thông tin cá nhân
+                        </a></li>
+                        <li><a class="dropdown-item" href="#" data-page="../user/tickets.html">
+                            <i class="fa fa-ticket me-2"></i> Vé của tôi
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" data-page="../manage_account/change_password.html">
+                            <i class="fa fa-lock me-2"></i> Đổi mật khẩu
+                        </a></li>
+                        <li><a class="dropdown-item" href="#" id="logout">
+                            <i class="fa fa-sign-out me-2"></i> Đăng xuất
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="content-area"></div>
+
+    <footer id="contact" class="contact">
+        <div class="container">
+            <div class="footer-top">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html">Nhà xe Hiếu Viện</a>
+                            </div>
+                            <p>
+                                Nhà xe Hiếu Viện cam kết mang đến dịch vụ vận chuyển an toàn, tiện nghi và chất lượng cao cho mọi hành khách.
+                            </p>
+                            <div class="footer-contact">
+                                <p>hieuvien@gmail.com</p>
+                                <p>Hotline: 0905 123 456</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h2>Thông tin</h2>
+                            <ul>
+                                <li><a href="#">Giới thiệu</a></li>
+                                <li><a href="#">Tuyển dụng</a></li>
+                                <li><a href="#">Điều khoản dịch vụ</a></li>
+                                <li><a href="#">Chính sách bảo mật</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                        <div class="single-footer-widget">
+                            <h2>Tuyến đường chính</h2>
+                            <div class="row">
+                                <div class="col-md-7 col-xs-6">
+                                    <ul>
+                                        <li><a href="#">Hà Tĩnh - Hà Nội</a></li>
+                                        <li><a href="#">Hà Nội - Hà Tĩnh</a></li>
+                                        <li><a href="#">Hà Tĩnh - Đà Nẵng</a></li>
+                                        <li><a href="#">Đà Nẵng - Hà Tĩnh</a></li>
+                                        <li><a href="#">Hà Nội - Đà Nẵng</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-offset-1 col-md-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h2>Đăng ký nhận tin</h2>
+                            <div class="footer-newsletter">
+                                <p>
+                                    Đăng ký để nhận thông tin mới nhất về lịch trình và ưu đãi.
+                                </p>
+                            </div>
+                            <div class="hm-foot-email">
+                                <div class="foot-email-box">
+                                    <input type="email" class="form-control" placeholder="Nhập email của bạn">
+                                </div>
+                                <div class="foot-email-subscribe">
+                                    <span><i class="fa fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            © 2025 Nhà xe Hiếu Viện. Thiết kế bởi <a href="#">Hiếu Viện Team</a>.
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="footer-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>    
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fa fa-behance"></i></a>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="scroll-Top">
+            <div class="return-to-top">
+                <i class="fa fa-angle-up" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Về đầu trang" aria-hidden="true"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/fetchStations.js"></script>
+    <script src="assets/js/trip.js"></script>
+
+    <script type="module">
+        import { logoutUser } from '../utils.js';
+
+        window.loadContent = function(page, extraParams = '') {
+            const contentArea = document.getElementById('content-area');
+            const baseUrl = page;
+            
+            // Chỉ áp dụng extraParams cho trip.html và tripSummary.html
+            let queryString = `page=${encodeURIComponent(baseUrl)}`;
+            if (extraParams && (baseUrl.includes('trip.html') || baseUrl.includes('tripSummary.html'))) {
+                queryString += extraParams.startsWith('&') ? extraParams : `&${extraParams}`;
+            }
+            
+            // Xử lý kết quả thanh toán
+            if (queryString.includes('resultCode') && queryString.includes('message')) {
+                const urlParams = new URLSearchParams(queryString);
+                const resultCode = urlParams.get('resultCode');
+                const message = urlParams.get('message');
+                const orderId = urlParams.get('orderId');
+                const amount = urlParams.get('amount');
+
+                let paymentMessage = '';
+                if (resultCode === '0') {
+                    paymentMessage = `
+                        <div class="payment-result">
+                            <h2>Thanh toán thành công</h2>
+                            <p>Mã đơn hàng: ${orderId}</p>
+                            <p>Số tiền: ${amount} VND</p>
+                            <p>Thông báo: ${decodeURIComponent(message)}</p>
+                            <a href="#" class="nav-link" data-page="../user/home.html">Quay về trang chủ</a>
+                        </div>
+                    `;
+                } else {
+                    paymentMessage = `
+                        <div class="payment-result">
+                            <h2>Thanh toán thất bại</h2>
+                            <p>Mã đơn hàng: ${orderId}</p>
+                            <p>Thông báo: ${decodeURIComponent(message)}</p>
+                            <a href="#" class="nav-link" data-page="../user/home.html">Quay về trang chủ</a>
+                        </div>
+                    `;
+                }
+
+                contentArea.innerHTML = paymentMessage;
+                history.pushState({ page: baseUrl }, '', `index.html?${queryString}`);
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.loadContent(this.getAttribute('data-page'));
+                    });
+                });
+
+                return;
+            }
+            
+            fetch(baseUrl)
+                .then(response => {
+                    console.log('Fetching:', baseUrl, 'Query:', queryString);
+                    if (!response.ok) throw new Error('Không thể tải trang');
+                    return response.text();
+                })
+                .then(data => {
+                    contentArea.innerHTML = data;
+                    
+                    history.pushState({ page: baseUrl }, '', `index.html?${queryString}`);
+                    
+                    // Cập nhật active link
+                    const navLinks = document.querySelectorAll('.nav-link');
+                    const dropdownItems = document.querySelectorAll('.dropdown-item[data-page]');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('data-page') === baseUrl) {
+                            link.classList.add('active');
+                        }
+                    });
+                    dropdownItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('data-page') === baseUrl) {
+                            item.classList.add('active');
+                        }
+                    });
+                    
+                    // Khởi tạo các thành phần
+                    if (baseUrl.includes('home.html')) {
+                        $('#new-cars-carousel').owlCarousel({
+                            loop: true,
+                            margin: 10,
+                            nav: true,
+                            responsive: {
+                                0: { items: 1 },
+                                600: { items: 1 },
+                                1000: { items: 1 }
+                            }
+                        });
+                        $('.testimonial-carousel').owlCarousel({
+                            loop: true,
+                            margin: 10,
+                            nav: true,
+                            responsive: {
+                                0: { items: 1 },
+                                600: { items: 1 },
+                                1000: { items: 1 }
+                            }
+                        });
+                        if (typeof initializeStations === 'function') {
+                            initializeStations();
+                        }
+                    } else if (baseUrl.includes('trip.html')) {
+                        if (typeof initializeTripSearch === 'function') {
+                            initializeTripSearch();
+                        } else {
+                            const script = document.createElement('script');
+                            script.src = 'assets/js/trip.js';
+                            script.onload = () => initializeTripSearch && initializeTripSearch();
+                            document.head.appendChild(script);
+                        }
+                        if (typeof initializeStations === 'function') {
+                            initializeStations();
+                        } else {
+                            const script = document.createElement('script');
+                            script.src = 'assets/js/fetchStations.js';
+                            script.onload = () => initializeStations && initializeStations();
+                            document.head.appendChild(script);
+                        }
+                    } else if (baseUrl.includes('tripSummary.html')) {
+                        const oldScript = document.querySelector('script[src*="tripSummary.js"]');
+                        if (oldScript) oldScript.remove();
+                        const script = document.createElement('script');
+                        script.src = 'assets/js/tripSummary.js';
+                        script.type = 'module';
+                        script.async = true;
+                        script.onload = () => {
+                            if (typeof window.initializeTripSummary === 'function') {
+                                window.initializeTripSummary();
+                            } else {
+                                console.error('Không tìm thấy hàm initializeTripSummary');
+                                contentArea.innerHTML = '<p>Lỗi: Không thể khởi tạo trang xác nhận thanh toán.</p>';
+                            }
+                        };
+                        script.onerror = () => {
+                            console.error('Lỗi khi tải tripSummary.js');
+                            contentArea.innerHTML = '<p>Lỗi: Không thể tải script xác nhận thanh toán.</p>';
+                        };
+                        document.head.appendChild(script);
+                    } else if (baseUrl.includes('about.html')) {
+                        const script = document.createElement('script');
+                        script.src = 'assets/js/about.js';
+                        document.head.appendChild(script);
+                    } else if (baseUrl.includes('new.html')) {
+                        const script = document.createElement('script');
+                        script.src = 'assets/js/news.js';
+                        document.head.appendChild(script);
+                    } else if (baseUrl.includes('help.html')) {
+                        import('./assets/js/help.js')
+                            .then(module => {
+                                if (typeof module.initializeHelp === 'function') {
+                                    module.initializeHelp();
+                                } else {
+                                    console.error('Không tìm thấy hàm initializeHelp trong help.js');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Lỗi khi tải help.js:', error);
+                                contentArea.innerHTML = '<p>Lỗi: Không thể tải script hỗ trợ.</p>';
+                            });
+                    } else if (baseUrl.includes('tickets.html')) {
+                        const oldScript = document.querySelector('script[src*="ticket.js"]');
+                        if (oldScript) oldScript.remove();
+                        const script = document.createElement('script');
+                        script.type = 'module';
+                        script.src = 'assets/js/ticket.js';
+                        script.async = true;
+                        script.onload = () => {
+                            if (typeof window.initializeTicketManagement === 'function') {
+                                window.initializeTicketManagement();
+                            } else {
+                                console.error('Không tìm thấy hàm initializeTicketManagement');
+                                contentArea.innerHTML = '<p>Lỗi: Không thể khởi tạo trang quản lý vé.</p>';
+                            }
+                        };
+                        script.onerror = () => {
+                            console.error('Lỗi khi tải ticket.js');
+                            contentArea.innerHTML = '<p>Lỗi: Không thể tải script quản lý vé.</p>';
+                        };
+                        document.head.appendChild(script);
+                    } else if (baseUrl.includes('manage_account.html')) {
+                        const oldScript = document.querySelector('script[src*="manage_account.js"]');
+                        if (oldScript) oldScript.remove();
+                        const script = document.createElement('script');
+                        script.type = 'module';
+                        script.src = '../manage_account/manage_account.js';
+                        script.async = true;
+                        script.onload = () => {
+                            import('../manage_account/manage_account.js')
+                                .then(module => {
+                                    if (typeof module.initializeManageAccount === 'function') {
+                                        module.initializeManageAccount();
+                                    } else {
+                                        console.error('Không tìm thấy hàm initializeManageAccount');
+                                        contentArea.innerHTML = '<p>Lỗi: Không thể khởi tạo trang quản lý tài khoản.</p>';
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Lỗi khi tải manage_account.js:', error);
+                                    contentArea.innerHTML = '<p>Lỗi: Không thể tải script quản lý tài khoản.</p>';
+                                });
+                        };
+                        script.onerror = () => {
+                            console.error('Lỗi khi tải manage_account.js');
+                            contentArea.innerHTML = '<p>Lỗi: Không thể tải script quản lý tài khoản.</p>';
+                        };
+                        document.head.appendChild(script);
+                    } else if (baseUrl.includes('change_password.html')) {
+                        const script = document.createElement('script');
+                        script.type = 'module';
+                        script.src = './change_password.js';
+                        document.head.appendChild(script);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading:', baseUrl, error);
+                    contentArea.innerHTML = '<p>Đã xảy ra lỗi khi tải nội dung.</p>';
+                });
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = localStorage.getItem('name') || 'Khách';
+            document.getElementById('username').textContent = username;
+
+            const userAvatar = localStorage.getItem('avatar');
+            document.querySelector('.dropdown-toggle img').src = userAvatar;
+
+            const navLinks = document.querySelectorAll('.nav-link');
+    
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    const page = this.getAttribute('data-page');
+                    window.loadContent(page);
+                });
+            });
+    
+            // Kiểm tra query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const pageToLoad = urlParams.get('page') || '../user/home.html';
+            let extraParams = '';
+            if (pageToLoad.includes('trip.html') || pageToLoad.includes('tripSummary.html')) {
+                extraParams = Array.from(urlParams.entries())
+                    .filter(([key]) => key !== 'page')
+                    .map(([key, value]) => `${key}=${value}`)
+                    .join('&');
+            }
+            window.loadContent(pageToLoad, extraParams ? `&${extraParams}` : '');
+
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+            const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+
+            dropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const page = this.getAttribute('data-page');
+                    if (page) {
+                        window.loadContent(page);
+                        dropdownMenu.classList.remove('show');
+                    }
+                });
+            });
+
+            const logoutBtn = document.getElementById('logout');
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                logoutUser();
+                dropdownMenu.classList.remove('show');
+            });
+        });
+
+        window.addEventListener('popstate', function(event) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pageToLoad = urlParams.get('page') || '../user/home.html';
+            let extraParams = '';
+            if (pageToLoad.includes('trip.html') || pageToLoad.includes('tripSummary.html')) {
+                extraParams = Array.from(urlParams.entries())
+                    .filter(([key]) => key !== 'page')
+                    .map(([key, value]) => `${key}=${value}`)
+                    .join('&');
+            }
+            window.loadContent(pageToLoad, extraParams ? `&${extraParams}` : '');
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const dropdownItems = document.querySelectorAll('.dropdown-item[data-page]');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageToLoad) {
+                    link.classList.add('active');
+                }
+            });
+            dropdownItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-page') === pageToLoad) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
